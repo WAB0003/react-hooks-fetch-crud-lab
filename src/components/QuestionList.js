@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useTransition} from "react";
+import QuestionItem from "./QuestionItem";
 
-function QuestionList() {
+function QuestionList({allQuestions, handleDeletedQuestion, changeCorrectAnswer}) {
+
+  
+ const questionList = allQuestions.map((question,index)=>{
+    return (
+      <QuestionItem key={index} question = {question} handleDeletedQuestion={handleDeletedQuestion} changeCorrectAnswer={changeCorrectAnswer} />
+    )
+  })
+
   return (
     <section>
       <h1>Quiz Questions</h1>
-      <ul>{/* display QuestionItem components here after fetching */}</ul>
+      <ul>{questionList}</ul>
     </section>
   );
 }
